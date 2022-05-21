@@ -1,0 +1,10 @@
+{
+  "name": "thundergene-client-api-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "crypto-js": "^4.1.1",
+    "node-fetch": "2"
+  }
+}
