@@ -76,8 +76,8 @@ async function waitRedeemTask(id) {
 async function waitRedeemTaskRedeemed(id) {
   while (1) {
     let resp = await getRedeemStatus(id);
-    // return when redeemed
-    if (resp.status === 4) {
+    // return when redeemed/failed/redeemFailed
+    if (resp.status === 4 || resp.status === 1 || resp.status === 5) {
       break;
     }
     await wait(2000);
