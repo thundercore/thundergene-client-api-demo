@@ -5,6 +5,17 @@
   "license": "MIT",
   "dependencies": {
     "crypto-js": "^4.1.1",
+    "dotenv": "^16.0.1",
     "node-fetch": "2"
+  },
+  "scripts": {
+    "create-user": "node src/create-user.js",
+    "mint-token": "node src/mint-token.js",
+    "user-balance": "node src/user-balance.js",
+    "transfer-token": "node src/transfer-token.js",
+    "claim-token": "node src/claim-token.js",
+    "create-redeem": "node src/create-redeem.js",
+    "get-redeem": "node src/get-redeem.js",
+    "redeem": "node src/redeem.js"
   }
 }

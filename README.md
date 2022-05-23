@@ -12,6 +12,37 @@ This repository shows how to use ThunderGene client API. For more API details, y
 
 Once you have created your own project and token, you can start to use ThunderGene client API.
 
+This repository provide some API demo, to run the demos, please follow the steps below:
+
+1. git clone thundergene-client-api-demo
+2. cd thundergene-client-api-demo
+3. yarn install
+4. fill your .env file from .env.example
+
+These are the keys in .env file to run API demo
+
+| KEY                      | DESCRIPTION                                                                | REQUIRED |
+| ------------------------ | -------------------------------------------------------------------------- | -------- |
+| PROJECT_ID               | Project ID from ThunderGene console for identity verification              | true     |
+| API_KEY                  | API key to sign HMac hash                                                  | true     |
+| ENDPOINT                 | API server url                                                             | true     |
+| PROJECT_CONTRACT_ADDRESS | Project contract address from ThunderGene console                          | false    |
+| TARGET_ADDRESS           | Project user address from `yarn create-user` or `PROJECT_CONTRACT_ADDRESS` | false    |
+| TARGET_ADDRESS2          | Project user address from `yarn create-user` or `PROJECT_CONTRACT_ADDRESS` | false    |
+| ASSET_ID                 | Project asset Id from ThunderGene console                                  | false    |
+| REDEEM_CODE              | Redeem code from `yarn create-redeem`                                      | false    |
+
+After installed the dependencies, you can use one of the following scripts.
+
+1. `yarn create-user`: creates a project user
+2. `yarn user-balance`: get user balance of `TARGET_ADDRESS`, `ASSET_ID` (`ASSET_ID` and `TARGET_ADDRESS` are required)
+3. `yarn mint-token`: mint token to `TARGET_ADDRESS` (`TARGET_ADDRESS`, `ASSET_ID` are required)
+4. `yarn transfer-token`: transfer token from `TARGET_ADDRESS` to `TARGET_ADDRESS2` (`TARGET_ADDRESS`, `TARGET_ADDRESS2` and `ASSET_ID` are required)
+5. `yarn claim-token`: `TARGET_ADDRESS` claims token from `PROJECT_CONTRACT_ADDRESS` (`TARGET_ADDRESS` and `ASSET_ID` are required, and `TARGET_ADDRESS` can not be `PROJECT_CONTRACT_ADDRESS`. `CONTRACT_PROJECT_ADDRESS` should at least have 1 token of `ASSET_ID`)
+6. `yarn create-redeem`: creates redeem code for `TARGET_ADDRESS` with 1 `ASSET_ID` token (`TARGET_ADDRESS` and `ASSET_ID` are required, and `TARGET_ADDRESS` can not be `PROJECT_CONTRACT_ADDRESS`. `TARGET_ADDRESS` should at least have 1 token of `ASSET_ID`)
+7. `yarn get-redeem`: get underlying asset information of `REDEEM_CODE` (`REDEEM_CODE` is required)
+8. `yarn redeem`: redeem `REDEEM_CODE` to `TARGET_ADDRESS` (`REDEEM_CODE` and `TARGET_ADDRESS` are required. `TARGET_ADDRESS` can not be `PROJECT_CONTRACT_ADDRESS`)
+
 ## Project Information
 
 In project information page on ThunderGene console, there are some informations that you should take care. And these informations are required when using ThunderGene client API.
