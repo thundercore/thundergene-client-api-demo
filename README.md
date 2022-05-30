@@ -2,6 +2,8 @@
 
 ThunderGene is a platform provided by ThunderCore that aim to help web2 industry entering web3 world.
 
+`All links related to ThunderGene below are based on ThunderCore testnet.`
+
 This repository shows how to use ThunderGene client API. For more API details, you can visit [ThunderGene doc](https://thundergene.platform.dev.tt-eng.com/docs/#overview).
 
 ## Get Started
