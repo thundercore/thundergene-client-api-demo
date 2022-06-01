@@ -16,6 +16,10 @@
     "claim-token": "node src/claim-token.js",
     "create-redeem": "node src/create-redeem.js",
     "get-redeem": "node src/get-redeem.js",
-    "redeem": "node src/redeem.js"
+    "redeem": "node src/redeem.js",
+    "mint-nft": "node src/mint-nft.js",
+    "burn-nft": "node src/burn-nft.js",
+    "transfer-nft": "node src/transfer-nft.js",
+    "user-nft": "node src/user-nft.js"
   }
 }
