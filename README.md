@@ -41,7 +41,7 @@ After installed the dependencies, you can use one of the following scripts.
 3. `yarn mint-token`: mint token to `TARGET_ADDRESS` (`TARGET_ADDRESS`, `ASSET_ID` are required)
 4. `yarn transfer-token`: transfer token from `TARGET_ADDRESS` to `TARGET_ADDRESS2` (`TARGET_ADDRESS`, `TARGET_ADDRESS2` and `ASSET_ID` are required)
 5. `yarn claim-token`: `TARGET_ADDRESS` claims token from `PROJECT_CONTRACT_ADDRESS` (`TARGET_ADDRESS` and `ASSET_ID` are required, and `TARGET_ADDRESS` can not be `PROJECT_CONTRACT_ADDRESS`. `CONTRACT_PROJECT_ADDRESS` should at least have 1 token of `ASSET_ID`)
-6. `yarn create-redeem`: creates redeem code for `TARGET_ADDRESS` with 1 `ASSET_ID` token (`TARGET_ADDRESS` and `ASSET_ID` are required, and `TARGET_ADDRESS` can not be `PROJECT_CONTRACT_ADDRESS`. `TARGET_ADDRESS` should at least have 1 token of `ASSET_ID`)
+6. `yarn create-redeem`: creates redeem code for `TARGET_ADDRESS` with 1 `ASSET_ID` and 1 `ASSET_ID2` token (`TARGET_ADDRESS`, `ASSET_ID2` and `ASSET_ID` are required, and `TARGET_ADDRESS` can not be `PROJECT_CONTRACT_ADDRESS`. `TARGET_ADDRESS` should at least have 1 token of `ASSET_ID` and 1 token of `ASSET_ID2`)
 7. `yarn get-redeem`: get underlying asset information of `REDEEM_CODE` (`REDEEM_CODE` is required)
 8. `yarn redeem`: redeem `REDEEM_CODE` to `TARGET_ADDRESS` (`REDEEM_CODE` and `TARGET_ADDRESS` are required. `TARGET_ADDRESS` can not be `PROJECT_CONTRACT_ADDRESS`)
 9. `yarn mint-nft`: mint NFT to `TARGET_ADDRESS` (`TARGET_ADDRESS`, `ASSET_ID`, `TOKEN_ID`, `AMOUNT` are required)

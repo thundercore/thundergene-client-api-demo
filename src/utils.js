@@ -66,7 +66,7 @@ async function waitRedeemTask(id) {
   while (1) {
     let resp = await getRedeemStatus(id);
     // return when failed/locked
-    if (resp.status === 1 || resp.status === 3) {
+    if (resp.status === 1 || resp.status === 3 || resp.status === 6) {
       break;
     }
     await wait(2000);

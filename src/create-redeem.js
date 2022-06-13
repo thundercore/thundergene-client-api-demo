@@ -3,7 +3,7 @@ require("dotenv").config();
 const utils = require("./utils");
 const fetch = require("node-fetch");
 
-const { ENDPOINT, TARGET_ADDRESS, ASSET_ID } = process.env;
+const { ENDPOINT, TARGET_ADDRESS, ASSET_ID, ASSET_ID2 } = process.env;
 
 async function main() {
   const body = {
@@ -11,6 +11,10 @@ async function main() {
     redeem_assets: [
       {
         asset_id: ASSET_ID,
+        value: 1,
+      },
+      {
+        asset_id: ASSET_ID2,
         value: 1,
       },
     ],
@@ -29,7 +33,9 @@ async function main() {
 
   const status = await utils.getRedeemStatus(data.id);
 
-  console.log(`Create redeem done, get redeem code: ${status.redeem_code}`);
+  console.log(
+    `Create redeem done, get redeem code: ${status.redeem_code}, status: ${status.status}`
+  );
 }
 
 main().catch((e) => console.log(e));
