@@ -7,7 +7,7 @@ const { ENDPOINT, TARGET_ADDRESS, ASSET_ID } = process.env;
 
 async function main() {
   const response = await fetch(
-    `${ENDPOINT}/api/v1/client/user/nft?asset_id=${ASSET_ID}&address=${TARGET_ADDRESS}`,
+    `${ENDPOINT}/api/v1/client/user?asset_id=${ASSET_ID}&address=${TARGET_ADDRESS}`,
     {
       method: "get",
       headers: utils.genHeader(""),
@@ -15,7 +15,7 @@ async function main() {
   );
 
   const data = await response.json();
-  console.log(`User balance of asset: ${ASSET_ID} = ${data.balance}`);
+  console.log(`User balance of asset: ${ASSET_ID} = ${JSON.stringify(data)}`);
 }
 
 main().catch((e) => console.log(e));

@@ -20,6 +20,11 @@
     "mint-nft": "node src/mint-nft.js",
     "burn-nft": "node src/burn-nft.js",
     "transfer-nft": "node src/transfer-nft.js",
-    "user-nft": "node src/user-nft.js"
+    "user-nft": "node src/user-nft.js",
+    "create-nft-redeem": "node src/create-nft-redeem.js",
+    "redeem-nft": "node src/redeem-nft.js",
+    "get-nft-redeem": "node src/get-nft-redeem.js",
+    "sign": "node src/sign.js",
+    "send": "node src/send.js"
   }
 }
