@@ -41,9 +41,13 @@ After installed the dependencies, you can use one of the following scripts.
 3. `yarn mint-token`: mint token to `TARGET_ADDRESS` (`TARGET_ADDRESS`, `ASSET_ID` are required)
 4. `yarn transfer-token`: transfer token from `TARGET_ADDRESS` to `TARGET_ADDRESS2` (`TARGET_ADDRESS`, `TARGET_ADDRESS2` and `ASSET_ID` are required)
 5. `yarn claim-token`: `TARGET_ADDRESS` claims token from `PROJECT_CONTRACT_ADDRESS` (`TARGET_ADDRESS` and `ASSET_ID` are required, and `TARGET_ADDRESS` can not be `PROJECT_CONTRACT_ADDRESS`. `CONTRACT_PROJECT_ADDRESS` should at least have 1 token of `ASSET_ID`)
-6. `yarn create-redeem`: creates redeem code for `TARGET_ADDRESS` with 1 `ASSET_ID` token (`TARGET_ADDRESS` and `ASSET_ID` are required, and `TARGET_ADDRESS` can not be `PROJECT_CONTRACT_ADDRESS`. `TARGET_ADDRESS` should at least have 1 token of `ASSET_ID`)
+6. `yarn create-redeem`: creates redeem code for `TARGET_ADDRESS` with 1 `ASSET_ID` and 1 `ASSET_ID2` token (`TARGET_ADDRESS`, `ASSET_ID2` and `ASSET_ID` are required, and `TARGET_ADDRESS` can not be `PROJECT_CONTRACT_ADDRESS`. `TARGET_ADDRESS` should at least have 1 token of `ASSET_ID` and 1 token of `ASSET_ID2`)
 7. `yarn get-redeem`: get underlying asset information of `REDEEM_CODE` (`REDEEM_CODE` is required)
 8. `yarn redeem`: redeem `REDEEM_CODE` to `TARGET_ADDRESS` (`REDEEM_CODE` and `TARGET_ADDRESS` are required. `TARGET_ADDRESS` can not be `PROJECT_CONTRACT_ADDRESS`)
+9. `yarn mint-nft`: mint NFT to `TARGET_ADDRESS` (`TARGET_ADDRESS`, `ASSET_ID`, `TOKEN_ID`, `AMOUNT` are required)
+10. `yarn burn-nft`: burn NFT from `TARGET_ADDRESS` (`TARGET_ADDRESS`, `ASSET_ID`, `TOKEN_ID`, `AMOUNT` are required)
+11. `yarn transfer-nft`: transfer NFT from `TARGET_ADDRESS` to `TARGET_ADDRESS2` (`TARGET_ADDRESS`, `TARGET_ADDRESS2`, `ASSET_ID`, `TOKEN_ID`, `AMOUNT` are required)
+12. `yarn user-nft`: get NFT balance of `TARGET_ADDRESS` (`TARGET_ADDRESS`, `ASSET_ID` are required)
 
 ## Project Information
 
@@ -88,7 +92,7 @@ In ThunderGene, there is a role that called user, a user is bound to a project. 
 
 ### Create_User
 
-`POST /client/user`
+`POST /api/v1/client/user`
 
 Create an user that belongs to a project.
 
@@ -96,7 +100,7 @@ The user can only transfer asset between users that belong to the same project.
 
 ### Get_User_Balance
 
-`GET /client/user/asset`
+`GET /api/v1/client/user/asset`
 
 Get user balance under project, this API can also get the asset of `Project Contract Address`
 
@@ -110,19 +114,19 @@ We provide 3 APIs to manipulate token asset on blockchain
 
 ### Mint_Asset
 
-`POST /client/asset/mint`
+`POST /api/v1/client/asset/mint`
 
 Mint token API mints token to `to` address.
 
 ### Transfer_Asset
 
-`POST /client/asset/transfer`
+`POST /api/v1/client/asset/transfer`
 
 Tranfer token from `from` address to `to` address. If `from` is `Project Contract Address`, you can transfer to any address. But you can only transfer to `Project Contract Address` or project user when `from` is a project user.
 
 ### Claim_Token
 
-`POST /client/claim`
+`POST /api/v1/client/claim`
 
 Claim Token is very similar to transfer API, it transfers token from `Project Contract Address`. In web3 world, there are two websites([dapp.com](https://www.dapp.com/), [dappradar.com](https://dappradar.com/)) that ranks dapp by monitoring the activity of a smart contract. So claim token API increases the activity of `Project Contract`, as a result that it helps application get higher rank if you submit your application with `Project Contract Address`.
 
@@ -132,7 +136,7 @@ In ThunderGene, most of the APIs are asynchronous, and the reason why it is desi
 
 ### Get_Task_Result
 
-`GET /task`
+`GET /api/v1/task`
 
 The value of responded status should be one of the followings:
 
@@ -151,13 +155,13 @@ ThunderGene provides a series of APIs to let any user can redeem assets from a p
 
 ### Create_Redeem_Code
 
-`POST /client/redeem/create`
+`POST /api/v1/client/redeem/create`
 
 Creates a redeem code for given assets, `from` should be project user and assets should be project asset.
 
 ### Get_Redeem_Status
 
-`GET /client/redeem/status`
+`GET /api/v1/client/redeem/status`
 
 This API can be use to check if the redeem code is ready. The responded status should be one of the followings
 
@@ -172,12 +176,40 @@ Once the status is 3 (redeem task is ready and assets are locked), the responded
 
 ### Get_Asset_Of_Redeem_Code
 
-`GET /client/redeem`
+`GET /api/v1/client/redeem`
 
 Get assets that locked in redeem contract.
 
 ### Claim_Redeem_Code
 
-`POST /client/redeem`
+`POST /api/v1/client/redeem`
 
 Claim the assets that locked in redeem contract with `redeem_code`. The `redeem_code` can be found by `Get_Redeem_Status` API, and since this API is also asynchronous, it can also use `Get_Redeem_Status` to check if the redeem is successful.
+
+## NFT API
+
+In ThunderGene, we also provide NFT related API to satisfy the need of NFT. But first, NFT asset should be created beforehand in ThunderGene. Once NFT is created, fill the `asset_id` in `.env` file from ThunderGene console.
+
+### Mint NFT
+
+`POST /api/v1/client/nft/mint`
+
+Mint NFT to `to` address. `amount` and `token_id` are string type. If NFT is TT721, `amount` should be `"1"`.
+
+### Burn NFT
+
+`POST /api/v1/client/nft/burn`
+
+Burn NFT from `from` address. `amount` and `token_id` are string type. If NFT is TT721, `amount` should be `"1"`
+
+### Transfer NFT
+
+`POST /api/v1/client/nft/transfer`
+
+Transfer NFT from `from` address to `to` address. `amount` and `token_id` are string type. If NFT is TT721, `amount` should be `"1"`
+
+### Get User NFT
+
+`POST /api/v1/client/user/nft`
+
+Get user NFT balance of asset of `asset_id`, `address` should be the project user or project address
