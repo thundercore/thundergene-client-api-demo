@@ -9,7 +9,7 @@ async function main() {
   const body = {
     asset_id: ASSET_ID,
     to: TARGET_ADDRESS,
-    amount: "2",
+    amount: "1",
     token_id: "1",
   };
 

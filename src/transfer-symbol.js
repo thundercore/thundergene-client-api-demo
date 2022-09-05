@@ -3,34 +3,28 @@ require("dotenv").config();
 const utils = require("./utils");
 const fetch = require("node-fetch");
 
-const { ENDPOINT, TARGET_ADDRESS, ASSET_ID } = process.env;
+const { ENDPOINT, TARGET_ADDRESS, TARGET_ADDRESS2, SYMBOL } = process.env;
 
 async function main() {
   const body = {
+    symbol: SYMBOL,
     from: TARGET_ADDRESS,
-    redeem_assets: [
-      {
-        asset_id: ASSET_ID,
-        value: 1,
-      },
-    ],
+    to: TARGET_ADDRESS2,
+    value: 3,
   };
 
   const stringifyBody = JSON.stringify(body);
-  const response = await fetch(`${ENDPOINT}/api/v1/client/redeem/create`, {
+  const response = await fetch(`${ENDPOINT}/api/v1/client/asset/transfer`, {
     method: "post",
     headers: utils.genHeader(stringifyBody),
     body: stringifyBody,
   });
 
   const data = await response.json();
-
-  await utils.waitRedeemTask(data.id);
-
-  const status = await utils.getRedeemStatus(data.id);
+  await utils.waitTask(data.id);
 
   console.log(
-    `Create redeem done, get redeem code: ${status.redeem_code}, status: ${status.status}`
+    `Transfer token done, please visit: https://explorer-testnet.thundercore.com/address/${TARGET_ADDRESS2}/token-transfers for more details`
   );
 }
 
