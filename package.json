@@ -20,6 +20,10 @@
     "mint-nft": "node src/mint-nft.js",
     "burn-nft": "node src/burn-nft.js",
     "transfer-nft": "node src/transfer-nft.js",
-    "user-nft": "node src/user-nft.js"
+    "user-nft": "node src/user-nft.js",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.2.2"
   }
 }
