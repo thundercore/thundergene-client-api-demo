@@ -28,6 +28,10 @@
     "get-nft-redeem": "node src/get-nft-redeem.js",
     "sign": "node src/sign.js",
     "send": "node src/send.js",
-    "support": "node src/support-tokens.js"
+    "support": "node src/support-tokens.js",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.2.2"
   }
 }
