@@ -11,13 +11,18 @@ async function main() {
     redeem_assets: [
       {
         asset_id: ASSET_ID,
-        value: 1,
+        balance: [
+          {
+            token_id: "1",
+            amount: 1,
+          },
+        ],
       },
     ],
   };
 
   const stringifyBody = JSON.stringify(body);
-  const response = await fetch(`${ENDPOINT}/api/v1/client/redeem/create`, {
+  const response = await fetch(`${ENDPOINT}/api/v1/client/redeem/create/nft`, {
     method: "post",
     headers: utils.genHeader(stringifyBody),
     body: stringifyBody,

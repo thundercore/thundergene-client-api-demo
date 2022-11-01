@@ -12,7 +12,9 @@
     "create-user": "node src/create-user.js",
     "mint-token": "node src/mint-token.js",
     "user-balance": "node src/user-balance.js",
+    "user-symbol": "node src/user-symbol.js",
     "transfer-token": "node src/transfer-token.js",
+    "transfer-symbol": "node src/transfer-symbol.js",
     "claim-token": "node src/claim-token.js",
     "create-redeem": "node src/create-redeem.js",
     "get-redeem": "node src/get-redeem.js",
@@ -21,6 +23,12 @@
     "burn-nft": "node src/burn-nft.js",
     "transfer-nft": "node src/transfer-nft.js",
     "user-nft": "node src/user-nft.js",
+    "create-nft-redeem": "node src/create-nft-redeem.js",
+    "redeem-nft": "node src/redeem-nft.js",
+    "get-nft-redeem": "node src/get-nft-redeem.js",
+    "sign": "node src/sign.js",
+    "send": "node src/send.js",
+    "support": "node src/support-tokens.js",
     "test": "jest"
   },
   "devDependencies": {
