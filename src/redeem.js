@@ -3,11 +3,11 @@ require("dotenv").config();
 const utils = require("./utils");
 const fetch = require("node-fetch");
 
-const { ENDPOINT, TARGET_ADDRESS, REDEEM_CODE } = process.env;
+const { ENDPOINT, TARGET_ADDRESS2, REDEEM_CODE } = process.env;
 
 async function main() {
   const body = {
-    to: TARGET_ADDRESS,
+    to: TARGET_ADDRESS2,
     code: REDEEM_CODE,
   };
 
@@ -22,7 +22,7 @@ async function main() {
   await utils.waitRedeemTaskRedeemed(data.id);
 
   console.log(
-    `Redeem task done, please visit: https://explorer-testnet.thundercore.com/address/${TARGET_ADDRESS}/token-transfers for more details`
+    `Redeem task done, please visit: https://explorer-testnet.thundercore.com/address/${TARGET_ADDRESS2}/token-transfers for more details`
   );
 }
 

@@ -85,6 +85,7 @@ async function waitRedeemTaskRedeemed(id) {
 }
 
 module.exports = {
+  hmac,
   waitTask,
   waitRedeemTask,
   waitRedeemTaskRedeemed,
